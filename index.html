@@ -1,102 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Milan Chandrasekera</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Milan Chandrasekera</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Futura", "Segoe UI", sans-serif;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    body {
-      background: #0a192f;
-      color: #e6edf3;
-      line-height: 1.6;
-    }
+body {
+  background: #0b1220;
+  color: #e6edf3;
+  line-height: 1.6;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 40px;
-      background: rgba(10,25,47,0.95);
-      position: sticky;
-      top: 0;
-    }
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: rgba(11,18,32,0.95);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    nav h2 {
-      color: #64ffda;
-    }
+nav h2 {
+  color: #00d4ff;
+}
 
-    nav a {
-      color: #ccd6f6;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 14px;
-    }
+nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 14px;
+  position: relative;
+}
 
-    header {
-      padding: 100px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+nav a.active,
+nav a:hover {
+  color: #00d4ff;
+}
 
-    header h1 {
-      font-size: 48px;
-      color: #64ffda;
-    }
+/* HERO */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  padding: 120px 20px;
+  flex-wrap: wrap;
+}
 
-    header p {
-      margin-top: 15px;
-      color: #8892b0;
-      font-size: 18px;
-    }
+.hero-text h1 {
+  font-size: 52px;
+  color: #00d4ff;
+}
 
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+.hero-text p {
+  margin: 20px 0;
+  color: #94a3b8;
+  font-size: 18px;
+  max-width: 600px;
+}
 
-    h2 {
-      color: #64ffda;
-      margin-bottom: 20px;
-      font-size: 22px;
-    }
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #00d4ff;
+  color: #0b1220;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-right: 10px;
+  transition: 0.3s;
+}
 
-    .card {
-      background: #112240;
-      padding: 25px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+.btn:hover {
+  background: #00aacc;
+}
 
-    .job {
-      margin-bottom: 20px;
-    }
+/* PROFILE */
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #00d4ff;
+}
 
-    .job h3 {
-      font-size: 16px;
-      color: #e6edf3;
-    }
+/* BANNER */
+.banner img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
 
-    .job span {
-      font-size: 13px;
-      color: #8892b0;
-    }
+/* SECTIONS */
+section {
+  max-width: 900px;
+  margin: auto;
+  padding: 70px 20px;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #8892b0;
-    }
-  </style>
+h2 {
+  color: #00d4ff;
+  margin-bottom: 25px;
+}
+
+.card {
+  background: #111c33;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #94a3b8;
+}
+</style>
 </head>
 
 <body>
@@ -106,82 +152,123 @@
   <div>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<header>
-  <h1>Milan Chandrasekera</h1>
-  <p>
-    Aviation Professional | Commercial Pilot (FAA) | Operations & Business Leader
-  </p>
-</header>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>Milan Chandrasekera</h1>
+    <p>
+      Aviation & Aerospace Leader with 20+ years of global experience across airline operations,
+      defence projects, and international business expansion.
+    </p>
+
+    <a href="#contact" class="btn">Contact</a>
+    <a href="https://www.linkedin.com/in/mchandrasekera/" target="_blank" class="btn">LinkedIn</a>
+  </div>
+
+  <img src="profile.jpg" class="profile-pic">
+</div>
+
+<!-- BANNER -->
+<div class="banner">
+  <img src="banner.jpg">
+</div>
 
 <section id="about">
   <h2>About</h2>
   <div class="card">
-    <p>
-      Aviation professional with over 20 years of experience across airline operations,
-      pilot training, airport services, and international business development. Proven
-      track record working with global airlines, government institutions, and aerospace
-      organizations, combining operational expertise with leadership and strategic growth.
-    </p>
+    Aviation professional and FAA-certified Commercial Pilot with over two decades of experience
+    across aviation, aerospace, and international operations. Proven ability to lead large-scale
+    operations, manage defence projects, and drive global expansion initiatives.
   </div>
 </section>
 
 <section id="experience">
   <h2>Experience</h2>
 
-  <div class="card job">
-    <h3>Manager Operations – Deep Aviation Pvt Ltd</h3>
-    <span>2025 – Present</span>
-    <p>
-      Managing aerospace operations, coordinating across design, manufacturing, and QA teams.
-      Supporting defence projects, audits, compliance, and government engagements.
-    </p>
+  <div class="card">
+    <strong>Manager Operations – Deep Aviation</strong><br>
+    Leading aerospace manufacturing and defence coordination including Indian Air Force and HAL projects.
   </div>
 
-  <div class="card job">
-    <h3>VP International Operations – Aero Aviation Academy</h3>
-    <span>2019 – 2025</span>
-    <p>
-      Led global expansion, government liaison, training programs, and international partnerships
-      across multiple countries.
-    </p>
+  <div class="card">
+    <strong>VP International Operations – Aero Aviation Academy</strong><br>
+    Directed global expansion across Asia and Europe, managing training systems and international partnerships.
   </div>
 
-  <div class="card job">
-    <h3>Senior Briefing Officer – Qatar Airways</h3>
-    <span>2012 – 2015</span>
-    <p>
-      Key role in operations control, safety systems, and process automation in a global airline environment.
-    </p>
+  <div class="card">
+    <strong>Senior Briefing Officer – Qatar Airways</strong><br>
+    Key contributor to operations control, safety systems, and airport transition programs.
   </div>
 
 </section>
 
-<section id="skills">
-  <h2>Core Expertise</h2>
+<section id="projects">
+  <h2>Projects & Aerospace</h2>
+
   <div class="card">
-    <p>
-      Aviation Operations • Project Management (PMP) • Government Liaison • International Business Development •
-      Quality & Compliance (ISO / AS9100) • Training & Education • Strategic Planning
-    </p>
+    Aerospace lifecycle coordination across design, manufacturing, and QA for defence clients.
   </div>
+
+  <div class="card">
+    Rapid deployment of international web-based examination platform across multiple countries.
+  </div>
+
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
   <div class="card">
-    <p>Email: mchandrasekera@hotmail.com</p>
-    <p>Mobile: +91 7986895609</p>
+    Email: mchandrasekera@hotmail.com <br>
+    Phone: +91 7986895609 <br><br>
+    <a href="https://www.linkedin.com/in/mchandrasekera/" target="_blank">LinkedIn Profile</a>
   </div>
 </section>
 
 <footer>
   © 2026 Milan Chandrasekera
 </footer>
+
+<script>
+/* SCROLL ANIMATION */
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  cards.forEach(card => {
+    if (card.getBoundingClientRect().top < trigger) {
+      card.classList.add('show');
+    }
+  });
+});
+
+/* ACTIVE NAVIGATION */
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
 
 </body>
 </html>
